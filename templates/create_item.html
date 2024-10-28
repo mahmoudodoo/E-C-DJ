@@ -1,0 +1,51 @@
+<!-- create_item.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create a New Item</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" name="title" required class="form-control" id="title">
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" name="price" required class="form-control" id="price">
+    </div>
+    <div class="form-group">
+        <label for="discount_price">Discount Price:</label>
+        <input type="number" step="0.01" name="discount_price" class="form-control" id="discount_price">
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select name="category" required class="form-control" id="category">
+            <option value="C">Computer</option>
+            <option value="M">Mobile</option>
+            <option value="T">Tablet</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="label">Label:</label>
+        <select name="label" required class="form-control" id="label">
+            <option value="N">New</option>
+            <option value="R">Refurbished</option>
+            <option value="U">Used</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="slug">Slug:</label>
+        <input type="text" name="slug" required class="form-control" id="slug">
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea name="description" required class="form-control" id="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" name="image" required class="form-control" id="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Item</button>
+</form>
+<a href="{% url 'frontend:home' %}">Back to Home</a>
+{% endblock %}
